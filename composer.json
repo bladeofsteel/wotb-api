@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Yassa\\WoTBlitzAPI": "src/"
+            "Yassa\\WoTBlitzAPI\\": "src/"
         }
     },
     "autoload-dev": {
