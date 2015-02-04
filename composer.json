@@ -3,7 +3,7 @@
     "description": "Client for World of Tanks Blitz API",
     "version": "0.1.0",
     "type": "library",
-    "license": "GPL-2.0",
+    "license": "LGPL-3.0",
     "authors": [
         {
             "name": "Oleg Lobach",
