@@ -15,6 +15,7 @@ install:
   - composer install --no-interaction --prefer-source --dev
 
 script:
+  - cd tests
   - phpunit
 
 after_success:
