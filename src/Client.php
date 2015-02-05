@@ -31,6 +31,7 @@ use GuzzleHttp\Client as HttpClient;
 
 class Client
 {
+    const BASE_URI = 'https://api.wotblitz.ru/wotb/';
     /**
      * @type string Application ID
      */
@@ -48,6 +49,15 @@ class Client
 
     public function accountInfo($accountId)
     {
+
+        $request = $this->transport->createRequest('GET', 'account/info/', [
+            'query' => [
+                'application_id' => $this->applicationId,
+                'account_id'     => $accountId
+            ]
+        ]);
+
+        return $this->transport->send($request)->json();
     }
 
     public function accountList($search)
