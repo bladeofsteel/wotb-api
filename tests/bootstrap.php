@@ -5,3 +5,4 @@ if (false === @include_once(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 \VCR\VCR::configure()->setCassettePath(__DIR__ . '/fixtures');
+\VCR\VCR::configure()->enableRequestMatchers(['method', 'url', 'host', 'body', 'post_fields', 'query_string']);

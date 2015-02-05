@@ -1,0 +1,54 @@
+
+-
+    request:
+        method: GET
+        url: 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&account_id=1'
+        headers:
+            Host: api.wotblitz.ru
+            Accept-Encoding: null
+            User-Agent: 'Guzzle/5.2.0 curl/7.21.4 PHP/5.5.5'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Server: nginx
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '62'
+            Connection: keep-alive
+            X-Api-Version: 2.18.1
+            Content-Language: ru
+            Access-Control-Request-Method: 'GET, POST'
+            ETag: '"4a5dd18abbf78adeb1782db77a2e6066"'
+            Date: 'Thu, 05 Feb 2015 11:59:51 GMT'
+            Access-Control-Allow-Origin: '*'
+        body: '{"status":"ok","count":1,"meta":{"count":1},"data":{"1":null}}'
+-
+    request:
+        method: GET
+        url: 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&account_id=31100679'
+        headers:
+            Host: api.wotblitz.ru
+            Accept-Encoding: null
+            User-Agent: 'Guzzle/5.2.0 curl/7.21.4 PHP/5.5.5'
+            Accept: null
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Server: nginx
+            Content-Type: 'application/json; charset=utf-8'
+            Content-Length: '516'
+            Connection: keep-alive
+            Vary: Accept-Encoding
+            X-Api-Version: 2.18.1
+            Content-Language: ru
+            Access-Control-Request-Method: 'GET, POST'
+            ETag: '"0d4b394ae1fb271d36be034e8dc07540"'
+            Date: 'Thu, 05 Feb 2015 12:01:21 GMT'
+            Access-Control-Allow-Origin: '*'
+        body: '{"status":"ok","count":1,"meta":{"count":1},"data":{"31100679":{"last_battle_time":1423117196,"account_id":31100679,"created_at":1403989772,"updated_at":1423117716,"private":null,"statistics":{"max_xp_tank_id":9505,"frags":null,"all":{"spotted":8179,"hits":38319,"wins":3340,"losses":2845,"capture_points":4378,"battles":6280,"damage_dealt":7451253,"damage_received":5503943,"shots":45386,"xp":3962519,"frags":5718,"survived_battles":2267,"dropped_capture_points":15198},"max_xp":2448},"nickname":"Bladeofsteel_1"}}}'
