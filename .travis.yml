@@ -6,11 +6,25 @@ php:
     - 5.6
     - hhvm
 
-before_script:
+before_install:
     - composer self-update
     - composer install --no-interaction --prefer-source --dev
     - cp tests/phpunit.xml.dist tests/phpunit.xml
 
+install:
+  - composer install --no-interaction --prefer-source --dev
+
 script:
-    - cd tests
-    - phpunit
+  - phpunit
+
+after_success:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover logs/clover.xml
+
+# Faster builds on travis setup not using sudo.
+sudo: false
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
