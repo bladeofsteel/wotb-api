@@ -7,7 +7,6 @@ php:
 
 before_install:
     - composer self-update
-    - composer install --no-interaction --prefer-source --dev
     - cp tests/phpunit.xml.dist tests/phpunit.xml
 
 install:
@@ -34,7 +33,7 @@ notifications:
   webhooks:
     urls:
       - https://webhooks.gitter.im/e/924b827a9f5d3d0906d2
-    on_success: change  # options: [always|never|change] default: always
+    on_success: always  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
 
