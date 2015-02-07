@@ -2,33 +2,7 @@
 -
     request:
         method: GET
-        url: 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&account_id=1'
-        headers:
-            Host: api.wotblitz.ru
-            Accept-Encoding: null
-            User-Agent: 'Guzzle/5.2.0 curl/7.21.4 PHP/5.5.5'
-            Accept: null
-    response:
-        status:
-            http_version: '1.1'
-            code: '200'
-            message: OK
-        headers:
-            Server: nginx
-            Content-Type: 'application/json; charset=utf-8'
-            Content-Length: '62'
-            Connection: keep-alive
-            X-Api-Version: 2.18.1
-            Content-Language: ru
-            Access-Control-Request-Method: 'GET, POST'
-            ETag: '"4a5dd18abbf78adeb1782db77a2e6066"'
-            Date: 'Thu, 05 Feb 2015 11:59:51 GMT'
-            Access-Control-Allow-Origin: '*'
-        body: '{"status":"ok","count":1,"meta":{"count":1},"data":{"1":null}}'
--
-    request:
-        method: GET
-        url: 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&account_id=31100679'
+        url: 'https://api.wotblitz.ru/wotb/account/info/?application_id=demo&account_id=31100679&language&access_token'
         headers:
             Host: api.wotblitz.ru
             Accept-Encoding: null

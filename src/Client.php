@@ -21,50 +21,83 @@
  * @copyright  Copyright (c) 2015 Oleg Lobach <oleg@lobach.info>
  * @license    GNU Lesser General Public License <http://www.gnu.org/licenses/lgpl-3.0.txt>
  * @author     Oleg Lobach <oleg@lobach.info>
- * @version    0.1.0
+ * @version    0.2.0
  * @since      0.1.0
  */
 
 namespace Yassa\WoTBlitzAPI;
 
-use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\ClientInterface;
+use Yassa\WoTBlitzAPI\Argument\AbstractArgument;
+use Yassa\WoTBlitzAPI\Method\AbstractMethod;
 
 class Client
 {
     const BASE_URI = 'https://api.wotblitz.ru/wotb/';
+
     /**
      * @type string Application ID
      */
     protected $applicationId;
     /**
-     * @type HttpClient
+     * @type ClientInterface
      */
-    protected $transport;
+    protected $httpClient;
 
-    public function __construct($applicationId, HttpClient $transport)
+    /**
+     * @param ClientInterface $httpClient
+     */
+    public function __construct(ClientInterface $httpClient)
+    {
+        $this->setHttpClient($httpClient);
+    }
+
+    public function request(AbstractMethod $method, AbstractArgument $argument)
+    {
+        $argument->setApplicationId($this->getApplicationId());
+
+        $request = $this->getHttpClient()->createRequest(
+            $method->getRequestMethod(),
+            $method->getMethodPath(),
+            [
+                'query' => $method->getQueryArguments($argument)
+            ]
+        );
+
+        $result = $this->getHttpClient()->send($request)->json();
+
+        return $result;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApplicationId()
+    {
+        return $this->applicationId;
+    }
+
+    /**
+     * @param string $applicationId
+     */
+    public function setApplicationId($applicationId)
     {
         $this->applicationId = $applicationId;
-        $this->transport = $transport;
     }
 
-    public function accountInfo($accountId)
+    /**
+     * @return ClientInterface
+     */
+    public function getHttpClient()
     {
-
-        $request = $this->transport->createRequest('GET', 'account/info/', [
-            'query' => [
-                'application_id' => $this->applicationId,
-                'account_id'     => $accountId
-            ]
-        ]);
-
-        return $this->transport->send($request)->json();
+        return $this->httpClient;
     }
 
-    public function accountList($search)
+    /**
+     * @param ClientInterface $httpClient
+     */
+    public function setHttpClient(ClientInterface $httpClient)
     {
-    }
-
-    public function accountAchievements($accountId)
-    {
+        $this->httpClient = $httpClient;
     }
 }
